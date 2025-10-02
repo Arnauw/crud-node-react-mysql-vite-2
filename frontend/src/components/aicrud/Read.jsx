@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 export const Read = () => {
 
@@ -44,9 +45,12 @@ export const Read = () => {
                                     <td className="px-4 py-3">{ai.model}</td>
                                     <td className="px-4 py-3">
                                         <div className="flex items-center justify-center gap-3">
-                                            <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-1 px-3 rounded-md text-xs transition-colors">
+                                            <Link 
+                                                to={`/update/${ai.id}`}
+                                                state={{aiData: ai}}
+                                                className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-1 px-3 rounded-md text-xs transition-colors">
                                                 Edit
-                                            </button>
+                                            </Link>
                                             <button className="bg-red-600 hover:bg-red-500 text-white font-bold py-1 px-3 rounded-md text-xs transition-colors">
                                                 Delete
                                             </button>
