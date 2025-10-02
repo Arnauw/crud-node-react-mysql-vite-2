@@ -2,6 +2,9 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
+// const images = Object.values(import.meta.glob('/src/assets/images/*.{png,jpg,jpeg,svg}', { eager: true, as: 'url' }));
+
+
 export const Index = () => {
 
     const [ais, setAis] = useState([]);
@@ -56,34 +59,66 @@ export const Index = () => {
                                 <tr key={index}
                                     className="odd:bg-slate-800/50 even:bg-slate-700/50 hover:bg-slate-900/50 transition-colors text-center">
                                     <td className="px-4 py-3 font-medium">
-                                        <Link
-                                            to={`/read/${ai.id}`}
-                                            state={{aiData: ai}}
-                                        >
-                                            {ai.brand}
-                                        </Link>
+                                        {ai.brand}
                                     </td>
                                     <td className="px-4 py-3">
                                         {/*<Link*/}
                                         {/*    to={`/read/${ai.id}`}*/}
                                         {/*    state={{aiData: ai}}*/}
                                         {/*>*/}
-                                            {ai.model}
+                                        {ai.model}
                                         {/*</Link>*/}
                                     </td>
                                     <td className="px-4 py-3">
                                         <div className="flex items-center justify-center gap-3">
+
+                                            <Link
+                                                to={`/read/${ai.id}`}
+                                                state={{aiData: ai}}
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="ionicon h-8 w-8 mb-2 mx-auto"
+                                                     viewBox="0 0 512 512">
+                                                    <rect x="96" y="48" width="320" height="416" rx="48" ry="48"
+                                                          fill="none" stroke="currentColor" strokeLinejoin="round"
+                                                          strokeWidth="32"/>
+                                                    <path fill="none" stroke="currentColor" strokeLinecap="round"
+                                                          strokeLinejoin="round" strokeWidth="32"
+                                                          d="M176 128h160M176 208h160M176 288h80"/>
+                                                </svg>
+                                            </Link>
                                             <Link
                                                 to={`/update/${ai.id}`}
                                                 state={{aiData: ai}}
                                                 className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-1 px-3 rounded-md text-xs transition-colors">
-                                                Edit
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     className="ionicon h-8 w-8 mb-2 mx-auto"
+                                                     viewBox="0 0 512 512">
+                                                    <path
+                                                        d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48"
+                                                        fill="none" stroke="currentColor" strokeLinecap="round"
+                                                        strokeLinejoin="round" strokeWidth="32"/>
+                                                    <path
+                                                        d="M459.94 53.25a16.06 16.06 0 00-23.22-.56L424.35 65a8 8 0 000 11.31l11.34 11.32a8 8 0 0011.34 0l12.06-12c6.1-6.09 6.67-16.01.85-22.38zM399.34 90L218.82 270.2a9 9 0 00-2.31 3.93L208.16 299a3.91 3.91 0 004.86 4.86l24.85-8.35a9 9 0 003.93-2.31L422 112.66a9 9 0 000-12.66l-9.95-10a9 9 0 00-12.71 0z"/>
+                                                </svg>
                                             </Link>
                                             <button
                                                 className="bg-red-600 hover:bg-red-500 text-white font-bold py-1 px-3 rounded-md text-xs transition-colors"
                                                 onClick={() => handleDelete(ai.id)}
                                             >
-                                                Delete
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     className="ionicon h-8 w-8 mb-1 mx-auto"
+                                                     viewBox="0 0 512 512">
+                                                    <path
+                                                        d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320"
+                                                        fill="none" stroke="currentColor" strokeLinecap="round"
+                                                        strokeLinejoin="round" strokeWidth="32"/>
+                                                    <path stroke="currentColor" strokeLinecap="round"
+                                                          strokeMiterlimit="10" strokeWidth="32" d="M80 112h352"/>
+                                                    <path
+                                                        d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224"
+                                                        fill="none" stroke="currentColor" strokeLinecap="round"
+                                                        strokeLinejoin="round" strokeWidth="32"/>
+                                                </svg>
                                             </button>
                                         </div>
                                     </td>
