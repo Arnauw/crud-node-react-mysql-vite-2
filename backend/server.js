@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    const sql = "SELECT * FROM `ai`";
+    const sql = "SELECT * FROM ai";
     database.query(sql, (err, data) => {
         if (err) {
             return res.json("Error while getting data.");
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/create', (req, res) => {
-    const sql = "INSERT INTO `ai` (`brand`, `model`) VALUES (?, ?)";
+    const sql = "INSERT INTO ai (brand, model) VALUES (?, ?)";
     const values = [
         req.body.brand,
         req.body.model
@@ -50,8 +50,24 @@ app.post('/create', (req, res) => {
     })
 });
 
+app.get('/read/:id', (req, res) => {
+    const sql = "SELECT * FROM ai WHERE id = ?";
+    const id = req.params.id;
+    database.query(sql, [id], (err, data) => {
+        if (err) {
+            console.log('SQL Error:', err);
+            return res.status(500).json({ error: 'Error fetching item data' });
+        }
+        if (data.length > 0) {
+            return res.json(data[0]);
+        } else {
+            return res.status(404).json({ error: 'Item not found' });
+        }
+    });
+});
+
 app.put('/update/:id', (req, res) => {
-    const sql = "UPDATE`ai` SET `brand` = ?, `model` = ? WHERE id = ?";
+    const sql = "UPDATE ai SET brand = ?, model = ? WHERE id = ?";
     const values = [
         req.body.brand,
         req.body.model
@@ -59,7 +75,19 @@ app.put('/update/:id', (req, res) => {
     const id = req.params.id;
     database.query(sql, [...values, id], (err, data) => {
         if (err) {
-            return res.json("Error while inserting data.");
+            return res.json("Error while updating data.");
+        }
+        console.log(data);
+        return res.json(data);
+    })
+});
+
+app.delete('/delete/:id', (req, res) => {
+    const sql = "DELETE FROM ai WHERE id = ?";
+    const id = req.params.id;
+    database.query(sql, id, (err, data) => {
+        if (err) {
+            return res.json("Error while deleting data.");
         }
         console.log(data);
         return res.json(data);

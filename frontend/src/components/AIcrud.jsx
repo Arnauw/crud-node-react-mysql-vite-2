@@ -1,4 +1,4 @@
-import {Read} from "./aicrud/Read.jsx";
+import {Index} from "./aicrud/Index.jsx";
 import {Link} from "react-router-dom";
 
 export const AIcrud = () => {
@@ -9,13 +9,13 @@ export const AIcrud = () => {
                 <div className={"w-full max-w-4xl rounded-lg shadow-lg"}>
                     <div className={"flex justify-center"}>
                         <Link
-                            className={"bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition-colors"}
+                            className={"bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition-colors"}
                             to={"/create"}>
                             Add
                         </Link>
                     </div>
                     <div className={"read-container rounded-lg overflow-hidden"}>
-                        <Read></Read>
+                        <Index></Index>
                     </div>
                 </div>
             </div>

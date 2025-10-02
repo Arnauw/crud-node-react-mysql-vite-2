@@ -13,10 +13,13 @@ export const Create = () => {
         e.preventDefault();
         console.log({brand, model});
         try {
-            const res = await axios.post("http://localhost:8081/create", {
-                brand,
-                model
-            });
+            const res = await axios.post(
+                "http://localhost:8081/create",
+                {
+                    brand,
+                    model
+                }
+            );
             console.log(res.data);
             navigate('/');
         } catch (err) {

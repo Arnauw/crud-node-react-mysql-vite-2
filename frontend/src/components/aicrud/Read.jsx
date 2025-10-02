@@ -1,66 +1,40 @@
-import {useEffect, useState} from "react";
-import axios from "axios";
-import {Link} from "react-router-dom";
-
 export const Read = () => {
-
-    const [ais, setAis] = useState([]);
-    
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await axios.get("http://localhost:8081/");
-                setAis(res.data);
-                console.log(res.data);
-            } catch (err) {
-                console.err("Error fetching data:", err);
-            }
-        }
-        fetchData();
-    }, [])
-    
     return (
         <>
-            <div className="h-fit bg-slate-900 text-slate-200 flex justify-center p-4 m-4">
-                
-                <div className="w-full max-w-4xl h-fit bg-slate-800 rounded-xl shadow-lg py-6">
-                    
-                    <h1 className="text-2xl font-bold text-center mb-6">AIs</h1>
-                    
-                    <div className="overflow-x-auto rounded-lg">
-                        <table className="w-full text-left text-sm">
-                            
-                            <thead className="bg-slate-700 text-slate-300 uppercase tracking-wider">
-                            <tr className={"text-center"}>
-                                <th className="px-4 py-3 font-semibold">Brand</th>
-                                <th className="px-4 py-3 font-semibold">Model</th>
-                                <th className="px-4 py-3 font-semibold">Actions</th>
-                            </tr>
-                            </thead>
-                            
-                            <tbody className="divide-y divide-slate-700">
-                            {ais.map((ai, index) => (
-                                <tr key={index} className="hover:bg-slate-700/50 transition-colors text-center">
-                                    <td className="px-4 py-3 font-medium">{ai.brand}</td>
-                                    <td className="px-4 py-3">{ai.model}</td>
-                                    <td className="px-4 py-3">
-                                        <div className="flex items-center justify-center gap-3">
-                                            <Link 
-                                                to={`/update/${ai.id}`}
-                                                state={{aiData: ai}}
-                                                className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-1 px-3 rounded-md text-xs transition-colors">
-                                                Edit
-                                            </Link>
-                                            <button className="bg-red-600 hover:bg-red-500 text-white font-bold py-1 px-3 rounded-md text-xs transition-colors">
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
+            <div
+                className="min-w-screen min-h-screen  bg-slate-900 text-slate-200 flex items-center justify-center p-4">
+
+                <div className="w-full max-w-lg bg-slate-800 rounded-xl shadow-lg p-8">
+
+                    <h1 className="text-3xl font-bold text-center text-slate-100 mb-8">Item</h1>
+
+                    <div className="text-center my-4 font-bold text-slate-400">
+                        <div className="block text-sm font-medium text-slate-400 mb-2">
+                            AI Brand:
+                        </div>
+
+                        <div
+                            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg
+                            text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2
+                            focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            TEST BRAND
+                        </div>
                     </div>
+
+                    <div className="text-center my-4 font-bold text-slate-400">
+                        <div className="block text-sm font-medium text-slate-400 mb-2">
+                            AI Model:
+                        </div>
+
+                        <div
+                            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg
+                            text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2
+                            focus:ring-indigo-500 focus:border-indigo-500 transition"
+                        >
+                        TEST MODEL
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </>

@@ -14,17 +14,19 @@ export const Update = () => {
         e.preventDefault();
         console.log({brand, model});
         try {
-            const res = await axios.put(`http://localhost:8081/update/${id}`, {
-                brand,
-                model
-            });
+            const res = await axios.put(
+                `http://localhost:8081/update/${id}`,
+                {
+                    brand,
+                    model
+                }
+            );
             console.log(res.data);
             navigate('/');
         } catch (err) {
             console.error("Error creating item:", err);
         }
     }
-
 
     return (
         <>
