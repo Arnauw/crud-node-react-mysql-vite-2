@@ -20,7 +20,7 @@ export const Read = () => {
     
     return (
         <>
-            <div className="min-h-screen bg-slate-900 text-slate-200 flex justify-center p-4 m-4">
+            <div className="h-fit bg-slate-900 text-slate-200 flex justify-center p-4 m-4">
                 
                 <div className="w-full max-w-4xl h-fit bg-slate-800 rounded-xl shadow-lg py-6">
                     
