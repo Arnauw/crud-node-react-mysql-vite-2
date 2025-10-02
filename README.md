@@ -1,0 +1,1 @@
+Simple Node.js + Vite + MySQL + React + Tailwindcss CRUD app
