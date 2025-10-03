@@ -79,7 +79,7 @@ export const Update = () => {
                                 type="submit"
                                 className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-lg transition-colors"
                             >
-                                Create
+                                Update
                             </button>
                         </div>
 
